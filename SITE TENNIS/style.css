@@ -1,0 +1,812 @@
+@import url('//fonts.googleapis.com/css?family=Sora:400,700|Inter:400,700&display=swap');
+
+/* ===============================
+   VARIÁVEIS DE TEMA
+================================= */
+:root {
+  --main-foreground: #ffffff;
+  --main-background: #000000;
+
+  --accent-color: #E30F0F;
+  --secondary-color: #000000;
+
+  --button-background: #ffffff;
+  --button-foreground: #000000;
+
+  --label-background: #ffffff;
+  --label-foreground: #000000;
+
+  --adbar-background: #333333;
+  --adbar-foreground: #F1FF00;
+
+  --header-background: #000000;
+  --header-foreground: #FFFFFF;
+  --header-badge-background: #c0392b;
+  --header-badge-foreground: #ffffff;
+
+  --nav-desktop-background: #000000;
+  --nav-desktop-foreground: #FFFFFF;
+
+  --footer-background: #000000;
+  --footer-foreground: #FFFFFF;
+
+  --featured-background: #F4F4F4;
+  --featured-foreground: #333333;
+
+  --success: #4bb98c;
+  --danger: #dd7774;
+  --warning: #dc8f38;
+  --info: #3d9ccc;
+
+  --heading-font: "Sora", sans-serif;
+  --body-font: "Inter", sans-serif;
+
+  --h1: 28px;
+  --h2: 24px;
+  --h3: 20px;
+
+  --font-base: 14px;
+  --font-small: 12px;
+
+  --border-radius: 4px;
+  --border-solid: 1px solid;
+  --shadow-distance: 0 0 5px;
+}
+
+* {
+  margin: 0px;
+}
+
+/* ===============================
+   HEADER
+================================= */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: var(--header-background);
+  color: var(--header-foreground);
+}
+
+/* ===============================
+   FORM DE BUSCA
+================================= */
+.search-form {
+  position: relative;
+  width: 400px;
+  height: 37px;
+}
+
+.search-form input {
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  padding: 10px 40px 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  outline: none;
+  background: transparent;
+  color: var(--header-foreground);
+}
+
+.search-form input::placeholder {
+  color: #aaa;
+}
+
+.search-form button {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.search-form button img {
+  width: 18px;
+  height: 18px;
+
+}
+
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--header-background);
+  color: var(--header-foreground);
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+/* barra de busca à esquerda */
+.hdr1 {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.hdr1 input {
+  width: 300px;
+
+}
+
+/* logo centralizada absoluta */
+.hdr3 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hdr3 img {
+  height: 95px;
+  border-radius: 50px;
+  border: 3px solid #B79650;
+  padding: 5px;
+}
+
+/* ícones e login à direita */
+.hdr4 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 15px;
+}
+
+.hdr5 {
+  padding: 10px 10px;
+}
+
+.hdr6 {
+  font-weight: 700;
+  padding-right: 30px;
+
+}
+
+.hdr7 {
+  margin-right: 20px;
+}
+
+.hdr8 {
+  margin-right: 20px;
+}
+
+
+
+.card {
+  background-color: #1a1a1a;
+  /* tom escuro para os cards */
+  border: none;
+}
+
+.card-title,
+.card-text,
+.text-muted {
+  color: #fff !important;
+}
+
+.carousel-inner img {
+  height: 600px;
+  object-fit: cover;
+}
+
+
+
+/* ___________________________________________________________ */
+
+.produtos-container {
+  position: relative;
+  max-width: 1500px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.produtos-container h2,
+.text-link {
+  font-weight: 800;
+  font-size: 30px;
+}
+
+.produtos-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.produto-card {
+  min-width: 260px;
+  max-width: 260px;
+  margin: 0 10px;
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.produto-card img {
+  width: 100%;
+  display: block;
+}
+
+.produto-card img:hover {
+  overflow: hidden;
+  transition: transform 0.5s ease;
+}
+
+.produto-info {
+  padding: 10px;
+}
+
+.produto-info h3 {
+  font-size: 16px;
+  margin: 5px 0;
+  font-weight: normal;
+  color: #fff;
+}
+
+.produto-info p {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 5px 0;
+  color: #fff;
+}
+
+.nav-btn {
+  width: 60px;
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-btn.left {
+  left: 10px;
+}
+
+.nav-btn.right {
+  right: 10px;
+}
+
+.col,
+card,
+card-img-top {
+  border: none;
+  box-shadow: #939393 0.1rem;
+}
+
+.new-container {
+  display: flex;
+}
+
+/* ___________________________________________________________ */
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* permite quebrar para a linha de baixo */
+  gap: 20px;
+  /* espaço entre os cards */
+  justify-content: center;
+  /* centraliza os cards */
+  height: 450px;
+}
+
+.card-item {
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  width: 260px;
+  /* tamanho fixo dos cards */
+  flex: 1 1 auto;
+  /* faz com que os cards respeitem o espaço disponível */
+}
+
+.card-item img {
+  width: 100%;
+  display: block;
+  height: 400px;
+}
+
+.card-info {
+  padding: 25px;
+}
+
+.card-info h3 {
+  font-size: 16px;
+  margin: 5px 0;
+  font-weight: normal;
+  color: #fff;
+}
+
+.card-info p {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 5px 0;
+  color: #fff;
+}
+
+.zoom {
+  width: 300px;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+}
+
+.zoom:hover {
+  transform: scale(1.1);
+  /* aumenta 10% */
+}
+
+/* _______________________________________________________________________________________________________ */
+
+
+.principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.principal img {
+  width: 1100px;
+  border: none;
+  border-radius: 10px;
+  transition: transform 1s ease;
+
+}
+
+.principal img:hover {
+  transform: scale(1.1);
+}
+
+
+/* _______________________________________________________________________________________________________ */
+
+.prod {
+  margin-top: 8rem;
+  display: flex;
+  justify-content: center;
+}
+
+.prod-1 img {
+  width: 550px;
+  height: 650px;
+}
+
+.prod-2 {
+  padding-left: 50px;
+  padding-right: 50px;
+  display: block;
+  color: white;
+}
+
+.titulo-1 {
+  font-size: 14px;
+}
+
+.sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+}
+
+.btn-1 {
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-1:hover {
+  border: 1px solid #fff;
+  /* equivalente ao Bootstrap “border-light” */
+  color: #fff;
+}
+
+
+
+/* Container do controle (borda arredondada azul-escuro como no print) */
+.form-quantity {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 5px;
+  border: 2px solid #abadb1;
+  /* ajuste o tom pra ficar idêntico ao seu */
+  background-color: rgba(255, 255, 255, 0.04);
+  /* remove se quiser totalmente transparente */
+  transition: border-color .2s ease;
+}
+
+/* Botões setas (sem fundo, sem borda) */
+.form-quantity .btn {
+  width: 28px;
+  height: 28px;
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--main-foreground, #fff) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+.form-quantity .btn:hover {
+  opacity: .8;
+  transform: scale(1.05);
+}
+
+/* INPUT: transparente, sem borda, sem sombra Bootstrap, centralizado */
+.js-quantity-input.form-control {
+  width: 48px;
+  height: 28px;
+  padding: 0;
+  margin: 0;
+  background: transparent !important;
+  color: var(--main-foreground, #fff);
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  font-weight: 600;
+  text-align: center;
+  caret-color: #fff;
+}
+
+/* Remove os spinners nativos (Chrome/Edge/Safari) */
+.js-quantity-input::-webkit-outer-spin-button,
+.js-quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove spinners no Firefox */
+.js-quantity-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Feedback de foco no contêiner (não no input) */
+.js-quantity-input:focus-visible~.focus-ring,
+.form-quantity:focus-within {
+  border: 2px solid #abadb1;
+  /* um pouco mais claro no foco */
+}
+
+
+
+/* _______________________________________________________________________________________________________ */
+
+
+
+
+/* _______________________________________________________________________________________________________ */
+
+  .btn-esgotado {
+    background-color: #d1d1d1;        /* cinza claro */
+    color: #555;                      /* texto cinza escuro */
+    font-size: 22px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
+
+  /* Efeito hover (mesmo desabilitado visualmente) */
+  .btn-esgotado:hover {
+    background-color: #c6c6c6;
+    transform: scale(1.02);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Caso queira usar ele ativo no futuro */
+  .btn-esgotado:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+
+
+/* _______________________________________________________________________________________________________ */
+
+
+.section-title {
+      color: white;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+      text-align: start;
+    }
+
+    /* ===== CARROSSEL ===== */
+    .depoimentos-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding: 20px 10px;
+    }
+
+    .depoimentos-carousel::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .depoimentos-carousel::-webkit-scrollbar-thumb {
+      background: #444;
+      border-radius: 10px;
+    }
+
+    .depo-card {
+      flex: 0 0 280px;
+      background: #0d0d0d;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+      scroll-snap-align: start;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .depo-card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 18px rgba(255, 255, 255, 0.2);
+    }
+
+    .depo-header {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #f1f1f1;
+    }
+
+    .stars {
+      color: #ffce00;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .depo-text {
+      font-size: 0.95rem;
+      color: #ddd;
+      line-height: 1.5;
+    }
+
+
+
+/* _______________________________________________________________________________________________________ */
+
+    .newsletter-section {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .newsletter-section h2 {
+      font-weight: 800;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .newsletter-section p {
+      font-size: 1rem;
+      color: #ddd;
+      margin-bottom: 40px;
+    }
+
+    .newsletter-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background-color: #2b2b2b;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 15px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .newsletter-input::placeholder {
+      color: #aaa;
+    }
+
+    .newsletter-input:focus {
+      background-color: #3a3a3a;
+      outline: none;
+      box-shadow: 0 0 0 2px #fff;
+    }
+
+    .newsletter-btn {
+      background-color: #fff;
+      color: #000;
+      font-weight: 700;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      background-color: #ddd;
+      transform: scale(1.03);
+    }
+
+/* _______________________________________________________________________________________________________ */
+
+.footer {
+  background-color: #000;
+  font-family: 'Inter', sans-serif;
+}
+
+.footer-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin: 6px 0;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #bbbbbb;
+}
+
+.footer-text {
+  display: block;
+  margin: 6px 0;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+hr {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* _______________________________________________________________________________________________________ */
+
+
+/* ===============================
+   RESPONSIVIDADE
+================================= */
+@media (max-width: 1440px) {
+  header {
+    display: flex;
+    justify-content: center;
+
+  }
+
+
+
+
+
+}
+
+@media (max-width: 1024px) {
+  header {}
+
+  .hdr3 img {
+    margin-left: 0;
+    height: 80px;
+  }
+
+
+}
+
+/* Celulares grandes (até 768px) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hdr4 {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 10px;
+  }
+
+  .hdr6 p {
+    font-size: 12px;
+  }
+
+  .search-form {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  .hdr3 img {
+    height: 70px;
+  }
+
+  .produto-card {
+    min-width: 200px;
+    max-width: 200px;
+  }
+
+  .card-item {
+    width: 80%;
+  }
+
+  .principal img {
+    width: 95%;
+  }
+}
+
+/* Celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+  header {
+    padding: 10px;
+  }
+
+  .hdr3 img {
+    height: 60px;
+    border-radius: 30px;
+  }
+
+  .search-form {
+    width: 100%;
+    height: 32px;
+  }
+
+  .search-form input {
+    font-size: 13px;
+  }
+
+  .produtos-container h2,
+  .text-link {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .produto-card {
+    min-width: 160px;
+    max-width: 160px;
+    margin: 0 5px;
+  }
+
+  .card-item {
+    width: 100%;
+  }
+
+  .principal img {
+    width: 100%;
+  }
+
+  .nav-btn {
+    width: 40px;
+    font-size: 22px;
+  }
+}
