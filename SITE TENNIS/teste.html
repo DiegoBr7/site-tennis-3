@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho de Compras</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ====== RESET ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: #fff;
+      height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ====== BOTÃO FLUTUANTE DO CARRINHO ====== */
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: white;
+      color: black;
+      font-size: 22px;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1001;
+      transition: transform 0.2s ease;
+    }
+
+    .cart-icon:hover {
+      transform: scale(1.1);
+    }
+
+    /* ====== OVERLAY ESCURO ====== */
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      z-index: 1000;
+      transition: opacity 0.3s ease;
+    }
+
+    .cart-overlay.active {
+      display: block;
+    }
+
+    /* ====== CARRINHO LATERAL ====== */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      padding: 20px;
+      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.7);
+      z-index: 1002;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+    }
+
+    .cart-sidebar.active {
+      right: 0;
+    }
+
+    @media (max-width: 480px) {
+      .cart-sidebar {
+        width: 90%;
+      }
+    }
+
+    /* ====== CABEÇALHO ====== */
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+    .cart-header h5 {
+      font-size: 18px;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    /* ====== ITENS DO CARRINHO ====== */
+    .cart-items {
+      max-height: 60vh;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #222;
+      padding: 15px 0;
+      gap: 10px;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .cart-item div {
+      flex: 1;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    .quantity button {
+      background: #111;
+      border: 1px solid #444;
+      color: #fff;
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .quantity button:hover {
+      background: #222;
+    }
+
+    .quantity input {
+      width: 30px;
+      text-align: center;
+      background: transparent;
+      border: none;
+      color: white;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    /* ====== RODAPÉ ====== */
+    .cart-footer {
+      margin-top: 20px;
+      text-align: center;
+      border-top: 1px solid #333;
+      padding-top: 15px;
+    }
+
+    .cart-footer input {
+      width: 70%;
+      background: transparent;
+      border: 1px solid #444;
+      color: #fff;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .btn-calc,
+    .btn-comprar {
+      display: block;
+      width: 100%;
+      background: #fff;
+      color: #000;
+      padding: 10px;
+      border: none;
+      margin-top: 10px;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-calc:hover,
+    .btn-comprar:hover {
+      background: #ddd;
+    }
+
+    .link-produtos {
+      display: block;
+      margin-top: 15px;
+      color: #ccc;
+      text-decoration: underline;
+      transition: 0.3s;
+    }
+
+    .link-produtos:hover {
+      color: #fff;
+    }
+
+    /* ====== SCROLLBAR ====== */
+    .cart-items::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .cart-items::-webkit-scrollbar-thumb {
+      background: #444;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ÍCONE DO CARRINHO -->
+  <div class="cart-icon" onclick="toggleCart()">
+    🛒
+  </div>
+
+  <!-- OVERLAY ESCURO -->
+  <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+  <!-- CARRINHO LATERAL -->
+  <aside id="cartSidebar" class="cart-sidebar" role="dialog" aria-labelledby="cartTitle" aria-hidden="true">
+    <div class="cart-header">
+      <h5 id="cartTitle">Carrinho de Compras</h5>
+      <button class="close-btn" onclick="toggleCart()">×</button>
+    </div>
+
+    <div class="cart-items">
+      <div class="cart-item">
+        <img src="airforce.jpg" alt="Air Force 1 – Branco">
+        <div>
+          <p>Air Force 1 – Branco (34)</p>
+          <div class="quantity">
+            <button>-</button>
+            <input type="text" value="1" readonly>
+            <button>+</button>
+          </div>
+        </div>
+        <span class="price">R$160,00</span>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <p>Subtotal: <strong>R$160,00</strong></p>
+      <input type="text" placeholder="Digite seu CEP">
+      <button class="btn-calc">CALCULAR</button>
+      <hr style="border: 1px solid #222; margin: 15px 0;">
+      <p class="total">Total: <strong>R$160,00</strong></p>
+      <button class="btn-comprar">INICIAR COMPRA</button>
+      <a href="#" class="link-produtos">Ver mais produtos</a>
+    </div>
+  </aside>
+
+  <script>
+    function toggleCart() {
+      const sidebar = document.getElementById('cartSidebar');
+      const overlay = document.getElementById('cartOverlay');
+
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
